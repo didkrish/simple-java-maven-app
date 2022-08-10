@@ -17,11 +17,14 @@ jobs:
           command: mvn test
       - azure-acr/build-and-push-image:
           dockerfile: Dockerfile
-          login-server-name: firstregistry.azurecr.io
+          login-server-name: firstregistry28.azure.io
           registry-name: firstregistry28
           repo: simple-java-app
 
 workflows:
-  build-deploy-java-app:
-    jobs:
-      - build-and-test
+    example-workflow:
+      jobs:
+        - azure-acr/build-and-push-image:
+            login-server-name: firstregistry28.azure.io 
+            repo: firstregistry28/simple-java-app 
+            registry-name: firstregistry28 
